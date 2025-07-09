@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Grocery List</title>
+</head>
+<body>
+<h1>My Grocery List</h1>
+        {% if not groceries %}
+        <p>Grocery List is empty.</p>
+        {% endif %}
+<ul>
+    {% for item in groceries %}
+    <li>
+        {{item.item}} - {{item.quantity}}
+        <a href="{{ url_for('delete_confirm', id=item.id) }}">Delete</a>
+        <a href="{{ url_for('edit', id=item.id) }}">Edit</a>
+    </li>
+    {% endfor %}
+
+</ul>
+<a href="{{ url_for('add') }}">Add New Item</a>
+</body>
+</html>
